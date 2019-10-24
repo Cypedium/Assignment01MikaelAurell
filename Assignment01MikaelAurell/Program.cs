@@ -6,7 +6,6 @@ namespace Assignment01MikaelAurell
     {
         static void Main(string[] args)
         {
-
             Console.WriteLine("This is a calculator.");
             double number = AskUserForNumber("a number");
 
@@ -36,6 +35,9 @@ namespace Assignment01MikaelAurell
                         case '/':
                             number = CalcDived(number);
                             break;
+                        case 'c':
+                            number = 0;
+                            break;
                         case 'x':
                             keepAlive2 = false;
                             break;
@@ -44,7 +46,7 @@ namespace Assignment01MikaelAurell
                 catch (Exception e)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    //Console.WriteLine("A exception has occurred!\nIt can be that you inputed somthing other then a number in the menu or the assigment you were running has a flaw");
+                    Console.WriteLine("A exception has occurred!\nIt can be that you inputed somthing other then a number in the menu or the assigment you were running has a flaw");
                     Console.WriteLine(e);
                 }
 
@@ -58,21 +60,18 @@ namespace Assignment01MikaelAurell
                 newnumber= number + newnumber;
                 return newnumber;
             }
-
             static double CalcSubtration(double number)
             {
                 double newnumber = AskUserForNumber("a number");
                 newnumber = number - newnumber;
                 return newnumber;
             }
-
             static double CalcMultiplikation(double number)
             {
                 double newnumber = AskUserForNumber("a number");
                 newnumber = number * newnumber;
                 return newnumber;
             }
-
             static double CalcDived(double number)
             {
                 double newNumber = AskUserForNumber("a number");
@@ -91,25 +90,15 @@ namespace Assignment01MikaelAurell
                     Console.ReadKey(true);
                     return number;
                 }
-                
             }
-
             static string AskUserFor(string forWhat)
             {
-                Console.Write($"Please input {forWhat}: ");
+                 Console.Write($"Please input {forWhat}: ");
                  return Console.ReadLine();
             }
-            static double AskUserForNumber2(string forWhat)
+            static double AskUserForNumber(string forWhat)
             {
                 return double.Parse(AskUserFor(forWhat));
             }
-             static double AskUserForNumber(string forWhat)
-                {
-                    return double.Parse(AskUserFor(forWhat));
-                }
-
-           
-
-        
     }
 }
