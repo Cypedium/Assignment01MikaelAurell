@@ -1,43 +1,115 @@
 ﻿using System;
 
 namespace Assignment01MikaelAurell
-{{
+{
     class Program
     {
         static void Main(string[] args)
         {
 
-            string firstName = AskUserFor("first name");
-            //string lastName = AskUserFor("last name");
-            //int age = AskUserForNumber("age");
+            Console.WriteLine("This is a calculator.");
+            double number = AskUserForNumber("a number");
 
-            Console.WriteLine($"Your full name is {firstName} {lastName} and you are {age} years old");
+            bool keepAlive2 = true;
+            while (keepAlive2)
+            {
+                try
+                {
 
-            double result = 7.4 * AskUserForNumber();
+                    Console.WriteLine($"{number}");
 
-            Console.WriteLine("7.4 * your munber is: " + result);
+                    Console.Write("För att avsluta tryck x. Välj vilket räknesätt: +, -, * eller /.");
+                    char selectionNumber = char.Parse(Console.ReadLine() ?? "");
 
 
-            char aLetter = 'a';
+                    switch (selectionNumber)
+                    {
+                        case '+':
+                            number = CalcAddition(number);
+                            break;
+                        case '-':
+                            number = CalcSubtration(number);
+                            break;
+                        case '*':
+                            number = CalcMultiplikation(number);
+                            break;
+                        case '/':
+                            number = CalcDived(number);
+                            break;
+                        case 'x':
+                            keepAlive2 = false;
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    //Console.WriteLine("A exception has occurred!\nIt can be that you inputed somthing other then a number in the menu or the assigment you were running has a flaw");
+                    Console.WriteLine(e);
+                }
 
-            Console.WriteLine(aLetter + 1);
-            Console.WriteLine(aLetter + "1");
-        }
+                Console.ResetColor();
+                Console.Clear();
+            }
+        }    
+            static double CalcAddition(double number)
+            {
+                double newnumber = AskUserForNumber("a number");
+                newnumber= number + newnumber;
+                return newnumber;
+            }
 
-        static string AskUserFor(string forWhat)
-        {
-            Console.Write($"Pleace input {forWhat}: ");
-            return Console.ReadLine();
-        }
+            static double CalcSubtration(double number)
+            {
+                double newnumber = AskUserForNumber("a number");
+                newnumber = number - newnumber;
+                return newnumber;
+            }
 
-        static int AskUserForNumber(string forWhat)
-        {
-            return int.Parse(AskUserFor(forWhat));
-        }
+            static double CalcMultiplikation(double number)
+            {
+                double newnumber = AskUserForNumber("a number");
+                newnumber = number * newnumber;
+                return newnumber;
+            }
 
-        static double AskUserForNumber() //Overload
-        {
-            return double.Parse(AskUserFor("decimal number"));
-        }
+            static double CalcDived(double number)
+            {
+                double newNumber = AskUserForNumber("a number");
+                if (newNumber != 0)
+                {
+                    newNumber = number / newNumber;
+                    return newNumber;
+                }
+
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You can't dived by 0");
+                    Console.ResetColor();
+                    Console.WriteLine("Press a button to continue.");
+                    Console.ReadKey(true);
+                    return number;
+                }
+                
+            }
+
+            static string AskUserFor(string forWhat)
+            {
+                Console.Write($"Please input {forWhat}: ");
+                 return Console.ReadLine();
+            }
+            static double AskUserForNumber2(string forWhat)
+            {
+                return double.Parse(AskUserFor(forWhat));
+            }
+             static double AskUserForNumber(string forWhat)
+                {
+                    return double.Parse(AskUserFor(forWhat));
+                }
+
+           
+
+        
     }
 }
