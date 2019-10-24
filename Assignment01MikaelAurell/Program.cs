@@ -14,12 +14,10 @@ namespace Assignment01MikaelAurell
             {
                 try
                 {
-
                     Console.WriteLine($"{number}");
 
                     Console.Write("Press x for Exit and c for Clear. Choose +, -, * or /.");
                     char selectionNumber = char.Parse(Console.ReadLine() ?? "");
-
 
                     switch (selectionNumber)
                     {
@@ -49,56 +47,55 @@ namespace Assignment01MikaelAurell
                     Console.WriteLine("A exception has occurred!\nIt can be that you inputed somthing other then a number in the menu or the assigment you were running has a flaw");
                     Console.WriteLine(e);
                 }
-
                 Console.ResetColor();
                 Console.Clear();
             }
         }    
-            static double CalcAddition(double number)
+        static double CalcAddition(double number)
+        {
+            double newnumber = AskUserForNumber("a number");
+            newnumber= number + newnumber;
+            return newnumber;
+        }
+        static double CalcSubtration(double number)
+        {
+            double newnumber = AskUserForNumber("a number");
+            newnumber = number - newnumber;
+            return newnumber;
+        }
+        static double CalcMultiplikation(double number)
+        {
+            double newnumber = AskUserForNumber("a number");
+            newnumber = number * newnumber;
+            return newnumber;
+        }
+        static double CalcDived(double number)
+        {
+            double newNumber = AskUserForNumber("a number");
+            if (newNumber != 0)
             {
-                double newnumber = AskUserForNumber("a number");
-                newnumber= number + newnumber;
-                return newnumber;
+                newNumber = number / newNumber;
+                return newNumber;
             }
-            static double CalcSubtration(double number)
-            {
-                double newnumber = AskUserForNumber("a number");
-                newnumber = number - newnumber;
-                return newnumber;
-            }
-            static double CalcMultiplikation(double number)
-            {
-                double newnumber = AskUserForNumber("a number");
-                newnumber = number * newnumber;
-                return newnumber;
-            }
-            static double CalcDived(double number)
-            {
-                double newNumber = AskUserForNumber("a number");
-                if (newNumber != 0)
-                {
-                    newNumber = number / newNumber;
-                    return newNumber;
-                }
 
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You can't dived by 0");
-                    Console.ResetColor();
-                    Console.WriteLine("Press a button to continue.");
-                    Console.ReadKey(true);
-                    return number;
-                }
-            }
-            static string AskUserFor(string forWhat)
+            else
             {
-                 Console.Write($"Please input {forWhat}: ");
-                 return Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You can't dived by 0");
+                Console.ResetColor();
+                Console.WriteLine("Press a button to continue.");
+                Console.ReadKey(true);
+                return number;
             }
-            static double AskUserForNumber(string forWhat)
-            {
-                return double.Parse(AskUserFor(forWhat));
-            }
+        }
+        static string AskUserFor(string forWhat)
+        {
+                Console.Write($"Please input {forWhat}: ");
+                return Console.ReadLine();
+        }
+        static double AskUserForNumber(string forWhat)
+        {
+            return double.Parse(AskUserFor(forWhat));
+        }
     }
 }
