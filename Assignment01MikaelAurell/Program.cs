@@ -17,7 +17,7 @@ namespace Assignment01MikaelAurell
 
                     Console.WriteLine($"{number}");
 
-                    Console.Write("För att avsluta tryck x. Välj vilket räknesätt: +, -, * eller /.");
+                    Console.Write("Press x for Exit and c for Clear. Choose +, -, * or /.");
                     char selectionNumber = char.Parse(Console.ReadLine() ?? "");
 
 
